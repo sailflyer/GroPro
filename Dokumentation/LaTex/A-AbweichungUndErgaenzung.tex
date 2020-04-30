@@ -1,0 +1,21 @@
+\chapter{Abweichungen und Erg\"anzungen zum Vorentwurf}
+\label{Abweichungen}
+\section{Abweichungen}
+Auf dem Programmkonzept wurden am Hauptalgorithmus die folgenden Modifikationen vorgenommen:
+%\begin{itemize}
+%	\item Die einer möglichen Lösung wird in die Tiefe ausgeführt. Dem Algorithmus wird nur das aktuell zu betrachtende Feld mitgegeben. In diesem werden dann alle ungenutzten Spielsteine geprüft, mit den darunter liegenden Ebenen.
+%	\item Hinzufügen von Methoden zum rückwärts drehen der Spielsteine, für die Ausgabe, zum bestimmen von ungenutzten Spielsteinen, und der Überprüfung ob der Spielstein eine Kombination ausführen kann.
+%\end{itemize}
+
+In der Implementierung sind die folgenden Modifikationen bei Datenstrukturen vorgenommen worden:
+%\begin{itemize}
+%	\item In der Methode \lstinline{getLoesung()} in der Klasse \lstinline{PuzzleLoeser}, wird anstelle einer \\ \lstinline{List<Map<Integer, Spielstein>>} nur eine \lstinline{List<Spielstein>} zurückgegeben. Im Rahmen dessen wurde auch der Datentyp der Variable \lstinline{wegeProbiert} auf den Datentyp \lstinline{List<Spielstein>} angepasst. Dies erleichtert die spätere Ausgabe der möglichen Lösung und die Variable \lstinline{loesung} lässt sich hiermit einsparen.
+%	\item Die Methode \lstinline{puzzleLoesbar()} wurde ausgelassen, da für diese keine Verwendung bestand. Da hier das abstrahieren zwischen den Methoden \lstinline{puzzleLoesbarAnfang()} und \lstinline{puzzleLoesbarAlgorithmus()} als nicht notwendig erscheint. Diese werden jeweils an einer Stelle nur aufgerufen, und brauchen aus diesem Grund nicht durch eine Master-Methode \lstinline{puzzleLoesbar()} abstrahiert zu werden.
+%\end{itemize}
+
+Bei der Behandlung der Sonder- und Fehlerfälle wurden keine Modifizierungen vorgenommen.
+
+\section{Ergänzungen}
+%Ergänzungen auflisten
+
+\cleardoublepage

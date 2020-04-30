@@ -1,0 +1,28 @@
+\chapter{Zusammenfassung und Ausblick}
+\label{chap:ZusammenfassungAusblick}
+\section{Zusammenfassung}
+\label{sec:Zusammenfassung}
+Durch die funktionale Trennung nach dem Model-View-Controller-Modell, kann die Ausgabe leicht geändert werden, ohne den Lösungsalgorithmus oder die Datenhaltung zu beeinflussen. Es können allerdings auch andere Lösungsalgorithmen entwickelt werden und der Controller, welcher diesen beinhaltet, einfach ausgetauscht werden. Damit ist das Programm offen für Erweiterung aber geschlossen gegenüber Änderungen. 
+Ein Manko ist, dass die Eingabe nicht in einer separaten Klasse erstellt wurde, sondern gemeinsam mit der Ausgabe. Damit muss bei Änderungen in der Eingabe auch die Ausgabe neu erstellt werden. Da dieses Problem aber durch Vererbung umgangen werden kann, indem die Eingabe ein weiteres Interface implementiert, ist an dieser Stelle nicht von dem Konzept abgewichen wurden.
+
+Das abspeichern der Spielsteine in einer Liste spart Zeit, weil bei der Werteabfrage bzw. bei Verwendung dieser nicht jedes mal der Typ konvertiert werden muss. Aufgrund dessen, dass nur eine mögliche Lösung gesucht werden muss, spart dies Zeit, da der Algortihmus mit finden der ersten möglichen Lösung endet.
+
+Die Schwäche des Algorithmus liegt allerdings in sehr unterschiedlichen Steinen, wo der nächste passende Stein der letzte ungenutzte ist. Dort greifen die vorhandenen Abbruchbedingungen nicht bzw. nicht wirksam genug und die Berechnungsdauer steigt rapide an. An diese Stelle müssten bei weiterer Entwicklung noch Optimierungen vorgenommen werden.
+\clearpage
+\section{Ausblick}
+\label{sec:Ausblick}
+Der Algorithmus kann noch verbessert werden, indem nicht für jeden ungenutzten Stein, jedes Feld ausprobiert wird, sondern nur für die ungenutzten, die die von den Nachbarfeldern geforderte Kombination enthalten. Dass heißt, dass nur die Steine probiert werden, deren Kantenziffern eine Folge beinhaltet, dass diese mit den Kantenziffern an den Nachbarfeldern übereinstimmen. Somit muss nicht mehr für jeden nicht legbaren Stein fünf Legeversuche durchgeführt werden, sondern nur noch für die Steine, die gelegt werden können. Dadurch kann selbst bei großen Abständen der Kartennummern für passende Karten der Algorithmus diese schnelle legen.
+
+Als mögliche Erweiterungen für das Programm ist folgendes denkbar
+\begin{itemize}
+	\item Eine grafische Oberfläche
+	\begin{itemize}
+		\item Ausgabe des Puzzles in Fünfecken.
+		\item Ausgabe aller möglichen Lösungen des Puzzles.
+		\item Eingabe der Puzzleteile über die grafische Oberfläche.
+	\end{itemize}
+	\item Verwendung anderer geometrischer Figuren als Puzzleteile, wie z.B. Sechsecke. Hierfür müsste auch das Spielfeld entsprechend angepasst werden.
+	\item Die Anzahl verschiedener Kantenziffern kann erhöht bzw. verringert werden, um das Puzzle entsprechend schwieriger bzw. leichter zu gestalten.
+	\item Andere Algorithmen, mit denen Regeländerungen verbunden sein könnten, wie z.B. dass die Summe der aneinanderliegenden Kanten 3 ergeben muss. (Dieses Beispiel ist nur sinnvoll, wenn weitere Kantenziffern erlaubt sind.)
+\end{itemize}
+\cleardoublepage

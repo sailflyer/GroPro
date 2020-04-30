@@ -1,0 +1,89 @@
+\chapter{Benutzeranleitung}
+\label{Benutzeranleitung}
+\vspace{-0.2cm}
+\section{Verzeichnisstruktur der Abgabe}
+Im Prüfungsprodukt sind folgende Dateien und Verzeichnisse vorhanden:
+\begin{description}
+	\item [Wurzelverzeichnis]
+\end{description}		
+	\begin{itemize}
+		\item vorkompilierte Version des Programms
+		\item Skript zum automatischen Ausführen des Programms mit mehreren Eingabedateien
+		\item Skript zum Kompilieren des Programms
+		\item Skript zum Löschen aller erstellten Ausgabedateien
+	\end{itemize}
+\begin{description}[\setlabelphantom{Output}]
+	\item [Output] Enthält die Ausgabedateien des Programms.
+	\item [src] Enthält den Quellcode des Programms.
+	\item [Tests] Enthält beispielhafte Eingabedateien.
+	\item [Doku] Enthält die Dokumentation.
+\end{description}
+\vspace{-0.2cm}
+\section{Vorbereitung des Systems}
+\subsection{Systemvoraussetzungen}
+Um das Programm verwenden zu können, wird ein Microsoft Betriebssystem in der Version 8 oder höher benötigt. Auf dem Betriebssystem muss die Windows PowerShell sowie eine Java Runtime Environment (JRE) der Version 8 oder höher installiert sein.
+
+Da die PowerShell nach Angaben von Microsoft standardmäßig auf jedem Windows Rechner mit einem Betriebssystem von Windows 8 oder höher installiert ist, werden hierfür keine weiteren Schritte notwendig.
+Für die Anwenderinnen und Anwender, welche auf einem Unix basiertem System arbeiten, stehen entsprechende Shell-Skripts zur Verfügung.
+
+Sollte die JRE nicht oder in einer veralteten Version installiert sein, kann dies unter der folgenden Adresse heruntergeladen werden:
+\newline
+\url{https://www.java.com/de/download/}
+
+\subsubsection*{PowerShell einrichten}
+Die PowerShell untersagt das Ausführen von fremden Skripten in den Standardeinstellungen. Damit dies geändert werden kann, muss die PowerShell als Administrator gestartet werden.
+
+Um die PowerShell als Administrator zu starten, geht man in den Startmenüeintrag der PowerShell. Diesen finden Sie durch das öffnen des Startmenüs und anschließender Eingabe von \glqq PowerShell\grqq Dort machen Sie einen Rechtsklick auf \glqq Windows PowerShell\grqq , und klicken in dem aufkommendem Menü auf den Punkt \glqq Als Administrator ausführen\grqq. Je nach Sicherheitseinstellungen des Betriebssystems erscheint ein Fenster mit der Nachfrage, ob Änderungen durch das Programm zugelassen werden sollen, dies wird mit \glqq Ja\grqq\ bestätigt. Gegebenenfalls müssen Sie auch Ihre Administratorrechte durch Angabe der Administrator-Benutzerdaten verifizieren um fortfahren zu können. Anschließend öffnet sich die Windows PowerShell mit Administratorrechten.
+
+Als erstes sollten die aktuellen Einstellungen mittels \lstinline{Get-ExecutionPolicy} ausgelesen und notiert werden, damit die Einstellungen später wieder zurückgesetzt werden können. Im nächsten Schritt werden die Richtlinien geändert. Dies geschieht über den Befehl \lstinline{Set-ExecutionPolicy RemoteSigned}. \lstinline{RemoteSigned} bedeutet, dass Skripte, die aus dem Internet heruntergeladen wurden, signiert sein müssen um ausgeführt zu werden. Lokal erstellte Skripte werden immer ausgeführt.
+
+Falls die Skripte nicht ausgeführt werden sollten, müssen die Richtlinien weiter herabgesetzt werden, dies geschieht über \lstinline{Set-ExecutionPolicy Unrestricted}. \lstinline{Unrestricted} bedeutet, dass alle Skripte ausgeführt werden, jedoch wird für unsignierte Skripte, die aus dem Internet stammen, eine Warnung ausgegeben.
+
+Die Richtlinien der PowerShell können in den ursprünglichen Zustand mittels des Befehls \lstinline{Set-ExecutionPolicy <POLICY>} zurückgesetzt werden. Dabei ist \lstinline{<POLICY>} der im ersten Schritt ausgelesene Wert. Somit könnten die Voreinstellungen beispielsweise wie folgt wieder aktiviert werden: \lstinline{Set-ExecutionPolicy Restricted}
+
+
+\subsection{Installation}
+Der gesamte Inhalt der Abgabe ist in ein beliebiges und beschreibbares Verzeichnis zu kopieren. Danach ist das Programm betriebsbereit.
+
+\clearpage
+\section{Kompilieren}
+\label[sec:Kompilieren]
+Ein vorkompiliertes und ausführbares Programm liegt in Form von \lstinline{GroPro.jar} der Abgabe bei. Soll das Programm wegen Änderungen im Quelltext, oder aus anderen Gründen neu kompiliert werden, kann mit dem Skript \lstinline{compile.cmd} bzw. \lstinline{compile.sh} das Programm neu kompiliert werden.
+
+Damit dies erfolgreich ausgeführt werden kann, darf die vorliegende Verzeichnisstruktur nicht verändert werden, weil das Skript speziell auf diese Struktur angepasst ist. Weiter ist erforderlich, dass ein Compiler für Java (JDK) der Version 8 in der Umgebungsvariable \lstinline{PATH} eingebunden ist. Ist der Compiler nicht in der Umgebungsvariable funktioniert der Compilerbefehl nicht.
+
+Um die \lstinline{PATH}-Variable zu erweitern, geht man im Startmenü mit einem Rechtsklick auf \glqq Computer\grqq $\rightarrow$ \glqq Eigenschaften\grqq. Dort wird \glqq Erweiterte Systemeinstellungen\grqq\ am linken Rand ausgewählt. Auf der Registerkarte \glqq Erweitert\grqq\ wird der unterste Knopf \glqq Umgebungsvariablen...\grqq\ gewählt. Im nächsten Schritt wählt man die \lstinline{PATH}-Variable aus, dabei ist es egal, ob nun die Benutzer- oder die Systemvariable geändert wird. Jedoch werden zur Änderung der Systemvariable Administratorrechte benötigt. Nach der Auswahl der \lstinline{PATH}-Variable wird auf den Knopf \glqq Bearbeiten...\grqq\ gedrückt. Im Feld für den Wert der Variable wird am Ende folgendes angehängt:
+
+\lstinline{;<Pfad zum JDK bin Ordner>}\newline
+Falls ein JDK einer höheren Version vorhanden ist, kann auch dieses verwendet werden. Das es aufgrund von Sprachlevelunterschieden zu Problemen bei der Ausführung und dem Kompilieren kommt, kann nicht ausgeschlossen werden. Verwenden Sie in dem Fall am besten ein openJDK1.8.x.
+
+Beim anfügen in die \lstinline{PATH}-Variable ist es wichtig auf das Semikolon zu achten, da dieses als Trennzeichen agiert.
+
+Wenn diese Bedingungen erfüllt sind, kann das Batch-/Shell-Skript \lstinline{compile.cmd} bzw. \lstinline{compile.sh} ausgeführt werden. Dabei wird automatisch die Datei \lstinline{GroPro.jar} neu erstellt.
+
+\clearpage
+\section{Programmaufruf}
+\label{sec:Programmaufruf}
+Um einzelne Dateien zu verarbeiten, müssen diese dem Programm \lstinline{GroPro.jar} über die Kommandozeile oder PowerShell als Parameter mitgegeben werden. In beiden Fällen erstellt das Programm eine Ausgabedatei, die den ursprünglichen Dateinamen um \glqq .out\grqq\ im Fehlerfall um \glqq .err\grqq\ erweitert.
+
+\section{Testen der Beispiele}
+Sollen mehrere Testbeispiele verarbeitet werden, müssen diese in einem Verzeichnis zusammen gefasst werden. Durch das PowerShell-Skript {start.ps1} bzw. dem Shell-Skript \lstinline{start.sh} werden diese dann nacheinander verarbeitet. Die Skripte haben als optionale Parameter \lstinline{DIR} und \lstinline{TYP}. Über \lstinline{DIR} kann ein Verzeichnis mit den Testfällen angegeben werden und über \lstinline{TYP} die Endung der Dateien. Die default-Werte sind für \lstinline{DIR ./Tests} und für \lstinline{TYP .txt}. Diese werden verwendet, wenn keine anderen Werte übergeben werden. Ein Beispiel für den Aufruf ist:
+
+\lstinline{./start.ps1 TYP=.input}
+
+Sollten Leerzeichen in einem Dateipfad vorhanden sein, so muss die Pfadangabe in Anführungszeichen stehen.
+
+\section{Fehlerfälle}
+\label{sec:Fehlerfälle}
+Bei der Ausführung der Skript-Dateien kann es zu diversen Fehlern kommen.
+Im folgenden finden Sie eine kurze Übersicht über mögliche Fehlerfälle und deren Behebung:
+\begin{description}
+    \item [Unbekannter Parameter] Überprüfen Sie, ob der angegebene Parameter keine Tippfehler enthält. \\ Dies kann auch auftreten, wenn bei der Verwendung von Leerzeichen in einem Value keine Anführungszeichen um diesen gesetzt worden sind.
+    \item [Pfad nicht gefunden (Programmausführung)] Überprüfen Sie, ob der angegebene Pfad vorhanden ist. Sollte dies nicht der Fall sein, führen Sie das Skript erneut aus mit einem neuen Pfad. Hierfür verwenden Sie bitte den Parameter \lstinline{DIR}. Andernfalls überprüfen Sie, ob Sie über Schreibberechtigungen auf diesem Verzeichnis verfügen.
+    \item [Pfad nicht gefunden (Kompilieren)] Beim auftreten dieses Fehlers, befindet sich kein Ordner \lstinline{src} im selben Verzeichnis wie das Skript oder der \lstinline{src}-Ordner wurde gelöscht. Bitte setzen Sie das Projekt auf den Auslieferungszustand zurück, damit die Sourcedateien wieder vorhanden sind, und führen das Skript dann erneut aus.
+    \item [Pfad nicht gefunden (cleanup)] Der Ordner \lstinline{Output} auf Ebene des Skriptes existiert nicht. Bitte erstellen Sie den Ordner \lstinline{Output} oder setzen Sie das Projekt auf den Auslieferungszustand zurück.
+    \item [Datei GroPro.jar nicht gefunden] Sollte dieser Fehler auftreten, müssen Sie vor dem ausführen des Skripts \lstinline{start.ps1} bzw. \lstinline{start.sh} das Skript zum kompilieren ausführen (\lstinline{compile.cmd} bzw. \lstinline{compile.sh})
+    \item [Befehl javac falsch geschrieben / nicht gefunden] Das JDK zum kompilieren konnte nicht gefunden werden. Dies kann daran liegen, dass das JDK nicht in der \lstinline{PATH}-Variable enthalten ist, oder gar nicht installiert. Bitte befolgen Sie hierfür die Anweisungen im Bereich Kompilieren.
+\end{description}
+
+\cleardoublepage

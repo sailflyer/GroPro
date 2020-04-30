@@ -1,0 +1,45 @@
+\chapter{Testdokumentation}
+\label{chap:Testdokumentation}
+Parallel zu dem Programm wurden Tests erstellt, um die direkte Funktionalität von hinzugefügtem Code zu überprüfen. Diese wurden als Systemtests ausgeführt und sind nach jeder Erweiterung des Programms komplett ausgeführt worden. Die Tests sind in Form von Eingabedateien in der Abgabe im Ordner Tests, die dazugehörigen Ausgaben im Ordner Output enthalten.
+
+\section{Systemtests}
+Alle Systemtests wurden durch Dateien getestet und die Ergebnisse manuell überprüft, weil eine automatische Verifizierung über Dateien für den gegebenen Zeitraum zu aufwendig ist und nicht gefordert war. Die Ein- und Ausgabedateien der Systemtests sind in der Abgabe enthalten.
+
+\subsection{Normalfall}
+Der Normalfall liegt vor, wenn der Inhalt der Eingabedatei keine Sonderfälle aus \fref{sec:Sonderfaelle} beinhaltet und keiner der in \fref{sec:Fehlerfaelle} aufgelisteten Fehler eintritt.
+
+Der Normalfall ist anhand des gegebenen IHK-Beispiels getestet worden. Anhand des ersten IHK-Beispiels wird in \fref{sec:ausfuehrlichesBsp} der Algorithmus und die einzelnen Schritte genauer erläutert.
+
+Für den Normalfall sind noch vier weitere Testbeispiele entwickelt worden. Das erste Beispiel \lstinline{LOESBAR_Beispiel1.txt} soll einen Normalfall mit vielen gleichen Werten testen, das zweite Beispiel \lstinline{LOESBAR_Beispiel2.txt} soll die Anforderung testen, dass zwischen den Kantenziffern beliebig viele Leerzeichen sein können. Die dritte Beispieldatei \lstinline{LOESBAR_Beispiel3.txt} soll einen Normalfall mit nur unterschiedlichen Teilen testen, die auch bei Verdrehung nicht mit den anderen übereinstimmen. Das vierte Beispiel \lstinline{NICHT_LOESBAR_Beispiel1.txt} testet die Anforderungen für den Fall, dass ein Puzzle übergeben wurde, welches nicht dem Sonderfall entspricht, da die Anzahl jeder Kantenziffer gerade ist, jedoch auch zu keiner Lösung führt.
+
+\subsection{Sonderfall}
+Für den Sonderfall, der in der Aufgabenanalyse im Abschnitt Sonderfälle (\fref{sec:Sonderfaelle}) beschrieben wurde, wurden insgesamt drei Testfälle erstellt, wobei die drei Testfälle eine ungerade Anzahl an Kantenziffern testet. Es waren mehr Testfälle als aufgelistete Sonderfälle nötig, weil die Beschreibung eines Sonderfalls allgemein ist, der Sonderfall aber horizontal und vertikal überprüft werden muss.
+
+\subsection{Fehlerfall}
+Es sind für die sieben Fehlerfälle, die in der Aufgabenanalyse im Abschnitt Fehlerfälle (\fref{sec:Fehlerfaelle}) aufgelistet sind, sieben Tests entwickelt worden. Wie auch schon bei den Sonderfällen sind einige in der Beschreibung zusammengefasst, aber einzeln getestet worden. In allen Fällen wird eine Fehlermeldung in die Ausgabedatei geschrieben und das Programm korrekt beendet, ohne die die Logik zum Lösen des Puzzles zu starten.
+
+Zusätzlich wurde noch getestet, wie das Programm auf nicht vorhandene Eingabedateien und nicht schreibbare Ausgabedateien reagiert. In beiden Fällen wurde die Fehlermeldung in einer Ausgabedatei im Root-Ordner ausgegeben und das Programm korrekt beendet.
+
+\clearpage
+\section{Ausführliches Beispiel}
+\label{sec:ausfuehrlichesBsp}
+An dieser Stelle wird das erste IHK-Beispiel herangezogen, also ein gültiges und lösbares Puzzle. Da das Beispiel keinerlei Fehler enthält, wird auf die Prüfung dieser in dem Beispiel verzichtet.
+
+Die Eingabedatei von diesem Beispiel sieht wie folgt aus:
+%\lstinputlisting[numbers=left,numberfirstline=true,stepnumber=1]{../../Tests/IHK_Beispiel1.txt}
+
+Trotz der Null-Indizierung in Java, werden weiterhin die Indizes 1 bis 12 verwendet. Im Programmcode werden auch diese Werte weitergegeben und beim auslesen oder schreiben von Arrays und Lists entsprechend angepasst.
+
+Zunächst wird bestimmt, ob das Puzzle überhaupt lösbar ist mit der Methode \lstinline{puzzleLoesbarAnfang()}.
+
+Die Rechenvariablen \lstinline{anzKZ0}, \lstinline{anzKZ1} und \lstinline{anzKZ2} werden mit 0 initialisiert. In Folge dessen werden alle Kanten jedes Puzzlesteils einmal aufgerufen, und die entsprechende Rechenvariable um 1 erhöht, wenn eine 0, 1 oder 2 eingelesen wurde. Im Anschluss wird das Ergebnis der boolschen Berechnung des Ergebnis, in dem überprüft wird, ob \lstinline{anzKZ0 \% 2 == 0 \&\& anzKZ1 \% 2 == 0 \&\& anzKZ2 \% 2 == 0} ist, zurückgegeben.
+
+Anschließend wird der Backtracking Algorithmus gestartet. Hier wird bis das Puzzle gelöst ist probiert, den ungenutzten Spielstein mit der geringsten Kartennummer (Position in der Eingabedatei) auf das nächste freie Feld zu setzen. Begonnen wird mit dem Feld 1 und Stein 1, welcher aufgrund dessen, dass keinerlei Bedingungen an diesen gestellt werden, gelegt werden kann.
+
+Nun wird die Tiefe des Algorithmus um 1 erhöht, und es wird fortgefahren mit dem einsetzen des 2. Steins in Feld 2. Dieser passt jedoch in der Grundorientierung nicht an das besetzte Feld 1 dran. Aus diesem Grund wird der Stein solange gedreht, bis dieser passt. Nach maximal 5 Drehungen, gilt der Stein als nicht legbar und der Algorithmus würde wieder eine Stufe nach oben gehen.
+Da der Stein allerdings nach einer Drehung an Feld 1 passt, wird mit dem dritten Spielstein für Feld drei fortgefahren.
+Nachdem der Algorithmus fertig ist, wird diese Ausgabedatei erstellt:
+
+%\lstinputlisting[numbers=left,numberfirstline=true,stepnumber=1]{../../Output/IHK_Beispiel1.txt.out}
+
+\cleardoublepage

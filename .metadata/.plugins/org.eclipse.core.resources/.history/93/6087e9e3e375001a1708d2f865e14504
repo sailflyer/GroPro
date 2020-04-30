@@ -1,0 +1,5 @@
+package io;
+
+public class DateiEingabe implements IEingabe {
+
+}
