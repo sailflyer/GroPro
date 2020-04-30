@@ -28,7 +28,7 @@ public class FileOutput implements IOutput {
 	
 	public void setFilename(String filename) {
 		if(filename == null || filename.trim().length() == 0) {
-			throw new IllegalArgumentException("Kein Dateiname �bergeben worden.");
+			throw new IllegalArgumentException("Kein Dateiname uebergeben worden.");
 		}
 		this.filename = filename;
 	}
