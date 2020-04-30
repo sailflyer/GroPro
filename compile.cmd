@@ -12,10 +12,21 @@ set srcdir="./src"
 if not exist %srcdir% (
   GOTO ERRORSECTION 
 )
-dir /s /B *.java > sources.txt
-javac @sources.txt -d ./bin
-jar -cvfe %prog% Main ./bin
-del sources.txt
+REM dir /s /B *.java > sources.txt
+REM javac @sources.txt -d ./bin
+REM jar -cvfe %prog% Main ./bin
+REM del sources.txt
+
+mvn clean install assembly:single
+cd target
+echo Verschiebe Jar-File
+move gropro-1.0-SNAPSHOT-jar-with-dependencies.jar ./../GroPro.jar
+cd ..
+
+echo Loesche sonstige Dateien
+for %%f in ("./target/*") do ( del %%f )
+rmdir target
+
 echo "Programm kompiliert"
 GOTO SUCCESSFULL
 
