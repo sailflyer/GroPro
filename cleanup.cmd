@@ -14,7 +14,7 @@ IF NOT EXIST %outdir% (
   echo "Zum beenden beliebige Taste druecken."
   pause > nul
 ) 
-for %%i in ("%outdir%/*.out") do (
+for %%i in ("%outdir%/*.out" "%outdir%/*.err") do (
   echo "Loesche Datei " %%i
   del %%i
 )

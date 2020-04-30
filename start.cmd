@@ -17,15 +17,15 @@ set typ  = ".txt"
       echo "Unbekannter Parameter: " %1%
       echo "Erlaubte Parameter sind:"
       echo "-d <Pfad_zu_Ordner>      Zur Angabe eines Verzeichnisses, aus dem die Testfaelle ausgefuehrt werden sollen (Standard: ./Tests)"
-      echo "-t <Dateiendung>         Zur Angabe einer Dateiendung, zur Einschränkung der auszuführenden Dateien im Testfallverzeichnis (Standard: .txt)"
+      echo "-t <Dateiendung>         Zur Angabe einer Dateiendung, zur Einschrï¿½nkung der auszufï¿½hrenden Dateien im Testfallverzeichnis (Standard: .txt)"
       echo "Ausfuehrung wird beendet."
       echo "Zum beenden beliebige Taste druecken."
       pause > nul
     ) ELSE (
       echo "---------------FEHLER---------------"
       echo "Fehlendes Argument fuer den Parameter: " %1%
-      echo "Bitte geben Sie bei der Angabe des Parameters -d zusätzlich einen Pfad an."
-      echo "Bei der Verwendung des Parameters -t geben Sie bitte zusätzlich eine Dateiendung an."
+      echo "Bitte geben Sie bei der Angabe des Parameters -d zusï¿½tzlich einen Pfad an."
+      echo "Bei der Verwendung des Parameters -t geben Sie bitte zusï¿½tzlich eine Dateiendung an."
       echo "Ausfuehrung wird beendet."
       echo "Zum beenden beliebige Taste druecken."
       pause > nul
@@ -41,15 +41,15 @@ set typ  = ".txt"
           echo "Unbekannter Parameter: " %1%
           echo "Erlaubte Parameter sind:"
           echo "-d <Pfad_zu_Ordner>      Zur Angabe eines Verzeichnisses, aus dem die Testfaelle ausgefuehrt werden sollen (Standard: ./Tests)"
-          echo "-t <Dateiendung>         Zur Angabe einer Dateiendung, zur Einschränkung der auszuführenden Dateien im Testfallverzeichnis (Standard: .txt)"
+          echo "-t <Dateiendung>         Zur Angabe einer Dateiendung, zur Einschrï¿½nkung der auszufï¿½hrenden Dateien im Testfallverzeichnis (Standard: .txt)"
           echo "Ausfuehrung wird beendet."
           echo "Zum beenden beliebige Taste druecken."
           pause > nul
         ) ELSE (
           echo "---------------FEHLER---------------"
           echo "Fehlendes Argument fuer den Parameter: " %3%
-          echo "Bitte geben Sie bei der Angabe des Parameters -d zusätzlich einen Pfad an."
-          echo "Bei der Verwendung des Parameters -t geben Sie bitte zusätzlich eine Dateiendung an."
+          echo "Bitte geben Sie bei der Angabe des Parameters -d zusï¿½tzlich einen Pfad an."
+          echo "Bei der Verwendung des Parameters -t geben Sie bitte zusï¿½tzlich eine Dateiendung an."
           echo "Ausfuehrung wird beendet."
           echo "Zum beenden beliebige Taste druecken."   
           pause > nul
@@ -57,7 +57,7 @@ set typ  = ".txt"
       ) ELSE (
         echo "---------------FEHLER---------------"
         echo "Parameter mehrfach verwendet!"
-        echo "Jeder Parameter darf maximal einmal verwendet werden für einen Aufruf."
+        echo "Jeder Parameter darf maximal einmal verwendet werden fï¿½r einen Aufruf."
         echo "Bitte ueberpruefen Sie die ordnungsmaessige Anwendung der Parameter."
         echo "Ausfuehrung wird beendet."
         echo "Zum beenden beliebige Taste druecken."

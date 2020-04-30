@@ -7,10 +7,18 @@ readonly prog
 readonly srcdir
 
 if [ -d "$srcdir" ]; then
-  find . -iname *.java > sources.txt
-  javac @sources.txt -d ./bin
-  jar -cvfe "$prog" Main ./bin
-  rm sources.txt
+  #find . -iname *.java > sources.txt
+  #javac @sources.txt -d ./bin
+  #jar -cvfe "$prog" Main ./bin
+  #rm sources.txt
+
+  mvn clean install assembly:single
+
+  cd target
+  mv gropro-1.0-SNAPSHOT-jar-with-dependencies.jar ./../GroPro.jar
+  cd ..
+  rm -r target
+
   echo "Programm kompiliert."
 else
   echo "-------------FEHLER-------------"
