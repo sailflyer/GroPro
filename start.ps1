@@ -45,7 +45,7 @@ if(Test-Path "./$prog")
             if($file)
             {
                 echo("-->" + ($file.FullName) + "<--")
-                & .\$prog $file.FullName
+                & java -jar $prog $file.FullName
             }
             else
             {
